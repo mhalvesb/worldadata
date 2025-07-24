@@ -1,0 +1,540 @@
+*{
+    font-family: 'Libre Franklin', sans-serif;
+    color: #fff;
+}
+
+.simple-bar-chart{
+  --line-count: 10;
+  --line-color: currentcolor;
+  --line-opacity: 0.25;
+  --item-gap: 2%;
+  --item-default-color: #060606;
+  
+  height: 9rem;
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--item-gap);
+  align-items: end;
+  padding-inline: var(--item-gap);
+  --padding-block: 1.5rem; /*space for labels*/
+  padding-block: var(--padding-block);
+  position: relative;
+  isolation: isolate;
+}
+
+.simple-bar-chart::after{
+  content: "";
+  position: absolute;
+  inset: var(--padding-block) 0;
+  z-index: -1;
+  --line-width: 1px;
+  --line-spacing: calc(100% / var(--line-count));
+  background-image: repeating-linear-gradient(to top, transparent 0 calc(var(--line-spacing) - var(--line-width)), var(--line-color) 0 var(--line-spacing));
+  box-shadow: 0 var(--line-width) 0 var(--line-color);
+  opacity: var(--line-opacity);
+}
+.simple-bar-chart > .item{
+  height: calc(1% * var(--val));
+  background-color: var(--clr, var(--item-default-color));
+  position: relative;
+  animation: item-height 1s ease forwards
+}
+.item{
+    background-color: #069CDB
+}
+
+@keyframes item-height { from { height: 0 } }
+
+.simple-bar-chart > .item > * { position: absolute; text-align: center }
+.simple-bar-chart > .item > .label { inset: 100% 0 auto 0 }
+.simple-bar-chart > .item > .value { inset: auto 0 100% 0 }
+
+body{
+    height: 100vh;
+    background-color: #333;
+    margin:0;
+    padding: 0;
+}
+
+
+
+.header{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+.main{
+    display: flex;
+    flex-direction: row;
+    background-color: #333;
+    width: 100%;
+    padding: 40px;
+}
+
+.main-area
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.allInfos{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+.countryimg
+{
+    width: 250px;
+    margin-top: 20px;
+}
+
+.countryinfo
+{
+    width: 100%;
+    display:flex;
+    align-items: center;
+}
+
+.countrymap{
+    border-radius: 10px;
+    margin: 0px 10px;
+    display: flex;
+    align-items: start;
+}
+
+.mapa{
+    box-shadow: 0px 0px 10px 1px rgba(255, 255,255,0.45);
+    padding: 20px 20px;
+    border-radius: 10px;
+    margin: 0px 10px;
+}
+.mapa img{
+    width: 400px;
+    height: auto;
+}
+
+.bandeira{
+    
+    
+    margin: 0px 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px rgba(255, 255,255,0.45);
+    padding: 20px 20px;
+}
+
+.bandeira img{
+    width: 300px;
+    
+}
+
+.moremoinfo{
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px rgba(255, 255,255,0.45);
+    padding: 20px 20px;
+    height: 280px;
+}
+.countrypopgraph{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    padding: 0px 10px;
+    height: auto;
+}
+.divgraphs{
+   display: flex;
+    align-items: center;
+    justify-content: space-around; 
+}
+.countryprogress
+{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #355E3B  linear-gradient(to right, transparent 50%, #90EE90 0);
+    display: flex;
+    margin: 10px 10px;
+    
+}
+
+.countryprogress p
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    margin: 0px;
+    color: #000;
+    font-weight: 100;
+}
+
+.countryxl{
+    font-size: 40px;
+    font-weight: 600;
+    margin: 0px;
+}
+
+.countryl{
+    font-size: 26px;
+    font-weight: 600;
+    margin: 10px 0px 25px 0px;
+
+}
+
+.countrypopgraph .countryprogress::before{
+    content: "";
+    position: relative;
+    display: block;
+    margin-left: 50%;
+    transform-origin: left;
+    border-radius: 0 100% 100% 0/50%;
+    width: 100%;
+    height: 100%;
+}
+
+.countryprogress::before{
+    background: #355E3B;
+    
+    animation-name: turn;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+
+.countryprogress::after{
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+
+
+.barcontainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    margin: 10px 0px;
+    padding: 25px 20px 20px 20px;
+    border-radius: 7px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px rgba(255, 255,255,0.45);
+    padding: 22px 20px;
+}
+
+.skill-box{
+    display: flex;
+    align-items: center;
+    
+}
+
+.skill-box .title{
+    display: block;
+    font-size: 14px;
+    color: #fff;
+}
+
+.skill-bar{
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+    height: 8px;
+    border-radius: 8px;
+    margin-top: 4px;
+    margin-left: 8px;
+}
+
+.skill-bar .skill-per{
+    position: relative;
+    display: block;
+    width: 0%;
+    height: 100%;
+    border-radius: 8px 0px 0px 8px;
+    background: var(--clr);
+    animation-name: graph;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.tooltip{
+    position: absolute;
+    right: -24px;
+    top: -26px;
+    background: var(--clr);
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 2px 6px;
+    z-index: 10;
+}
+
+.leftInfos{
+    width: 430px;
+}
+
+.tooltip::before{
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    height: 10px;
+    width: 10px;
+    z-index: -1;
+    background-color: var(--clr);
+    transform: translateX(120%) rotate(45deg);
+}
+
+.moreinfos{
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px rgba(255, 255,255,0.45);
+}
+
+.moreinfos p{
+    margin: 5px 0px;
+}
+
+
+.divinput{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50%;
+}
+
+.divinput input{
+    width: 100%;
+    font-size: 25px;
+    padding: 5px;
+    color: rgb(150,150,150);
+    border: 2px solid rgb(200,200,200); 
+    outline: 0;
+    background: transparent;
+}
+
+.divinput label{
+    position: absolute;
+    color: rgb(150,150,150);
+    background: #333;
+    user-select: none;
+    left: 0;
+    transition: 0.2s;
+    padding: 0;
+    margin: 0;
+    margin-left: 5px;
+    padding: 3px 5px;
+    cursor: text;
+}
+
+.divinput input:focus, .divinput input:valid{
+    border: 2px solid cornflowerblue;
+}
+
+.divinput input:focus ~ label, .divinput input:valid ~ label{
+    transform: translateY(-22px);
+    font-size: 12px;
+}
+
+.search{
+    position: absolute;
+    background-color: #444;
+    width: 50%;
+    left: 0;
+    top: 104%;
+    display: flex;
+
+}
+
+.search ul{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px 7px;
+    display: none;
+    align-items: stretch;
+    justify-content: stretch;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.search li{
+    width: 99%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgb(200,200,200);
+    text-align: start;
+    border: 2px solid rgb(150,150,150);
+    padding: 0;
+    margin: 5px 0px;
+}
+
+.divinput input:focus ~ .search ul{
+    display: flex;
+}
+
+
+.search li img{
+    width: 20px;
+    margin: 0px 5px;
+}
+
+.graph1, .graph2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+     box-shadow: 0px 0px 10px 1px rgba(255, 255,255,0.45);
+    padding: 20px 20px;
+    border-radius: 10px;
+    height: 200px;
+    margin: 0px 5px;
+}
+
+
+
+@keyframes graph{
+    0%{
+        width: 0%;
+    }
+
+    100%{
+        width: var(--idh);
+    }
+}
+
+@keyframes turn{
+    0%{
+        transform: rotate(0);
+    }
+
+    100%{
+        transform: rotate(calc((var(--i) - 0) * 0.01turn));
+    }
+}
+
+
+
+
+
+@media(max-width: 1440px){
+    .header{
+        height: 50px;
+    }
+    .main{
+        padding: 10px;
+        margin-top: 5px;
+    }
+    .countryimg{
+        margin-top: 0;
+    }
+    .countryimg img{
+        width: 200px;
+    }
+    .countryprogress{
+        width: 120px;
+        height: 120px;
+    }
+    .countryprogress p {
+        font-size: 12px;
+    }
+    .divinput input{
+        font-size: 16px;
+    }
+    .divinput label{
+        padding: 1px 5px;
+    }
+    .divinput input:valid ~ label, .divinput input:focus ~ label {
+        transform: translateY(-16px);
+    }
+    .countryxl{
+        font-size: 30px;
+    }
+    .countryl{
+        font-size: 20px;
+        margin: 5px 0px 15px 0px;
+    }
+    .barcontainer{
+        padding: 0;
+    }
+}
+
+
+@media(max-width: 600px){
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    .main{
+        width: 300px;
+        height: 434px;
+    }
+    .divinput label{
+        font-size: 10px;
+    }
+    .divinput input:focus ~ label, .divinput input:valid ~ label{
+        transform: translateY(-16px);
+        font-size: 8px;
+    }
+    .countryimg img{
+        width: 100px;
+    }
+    .countryimg img{
+        font-size: 25px;
+    }
+    .countryprogress{
+        width: 90px;
+        height: 90px;
+    }
+
+    .graph1, .graph2{
+        font-size: 10px;
+    }
+    .countryprogress{
+        justify-content: center;
+    }
+
+    .countryprogress p{
+        font-size: 8px;
+    }
+    .barcontainer{
+        width: 250px;
+        margin: 10px 0px;
+    }
+    .moreinfos{
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 0px;
+    }
+    .search{
+        width: 100%;
+    }
+
+    .search li{
+        height: 100%;
+        min-height: 30px;
+    }
+}
